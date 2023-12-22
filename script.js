@@ -7,21 +7,13 @@ menLayoutBtn.classList.add("active-btn");
 let activeLayout = "Men";
 let products = null;
 
-const displayLayout = () => {
-  console.log(activeLayout);
-};
-
-displayLayout();
-
 const addProductsInList = () => {
   const ListEl = document.getElementById("");
   let filteredProducts = products.find(
     (eachItem) => eachItem.category_name === activeLayout
   );
-  console.log(filteredProducts);
 
   filteredProducts.category_products.map((eachItem) => {
-    console.log(eachItem);
     const badge = eachItem.badge_text === "null" ? "" : eachItem.badge_text;
     let diff = eachItem.compare_at_price - eachItem.price;
     const percentage = Math.round((diff / eachItem.compare_at_price) * 100);
@@ -92,7 +84,6 @@ menLayoutBtn.addEventListener("click", (event) => {
   menLayoutBtn.classList.add("active-btn");
   wonmenLayoutBtn.classList.remove("active-btn");
   kidsLayoutBtn.classList.remove("active-btn");
-  displayLayout();
   removeAndAddProducts();
 });
 
@@ -101,7 +92,6 @@ wonmenLayoutBtn.addEventListener("click", (event) => {
   menLayoutBtn.classList.remove("active-btn");
   wonmenLayoutBtn.classList.add("active-btn");
   kidsLayoutBtn.classList.remove("active-btn");
-  displayLayout();
   removeAndAddProducts();
 });
 
@@ -110,6 +100,5 @@ kidsLayoutBtn.addEventListener("click", (event) => {
   menLayoutBtn.classList.remove("active-btn");
   wonmenLayoutBtn.classList.remove("active-btn");
   kidsLayoutBtn.classList.add("active-btn");
-  displayLayout();
   removeAndAddProducts();
 });
