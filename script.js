@@ -23,6 +23,8 @@ const addProductsInList = () => {
   filteredProducts.category_products.map((eachItem) => {
     console.log(eachItem);
     const badge = eachItem.badge_text === "null" ? "" : eachItem.badge_text;
+    let diff = eachItem.compare_at_price - eachItem.price;
+    const percentage = Math.round((diff / eachItem.compare_at_price) * 100);
 
     const cardEl = document.createElement("li");
     cardEl.innerHTML = `
@@ -48,7 +50,7 @@ const addProductsInList = () => {
     priceOfferEl.innerHTML = `
       <p><b>RS ${eachItem.price}</b></p>
       <p><strike>${eachItem.compare_at_price}.00</strike></p>
-      <p class="percentage">50% OFF</p>
+      <p class="percentage">${percentage}% OFF</p>
     `;
     priceOfferEl.classList.add("price-offer-container");
     cardEl.appendChild(priceOfferEl);
